@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Blackjack
@@ -24,6 +25,32 @@ namespace Blackjack
             {
                 Console.WriteLine(card.ToString());
             }
+
+            Player p1 = new Player();
+
+            // Get a random card from the deck
+            Random r = new Random();
+            int rand = r.Next(0, deckOfCards.Count);
+            Card firstCard = deckOfCards.ElementAt(rand);
+            deckOfCards.RemoveAt(rand);
+            Console.WriteLine(deckOfCards.Count);
+            p1.getHand().Add(firstCard);
+
+            //Get another random card from the deck
+            rand = r.Next(0, deckOfCards.Count);
+            Card secondCard = deckOfCards.ElementAt(rand);
+            deckOfCards.RemoveAt(rand);
+            Console.WriteLine(deckOfCards.Count);
+            p1.getHand().Add(secondCard);
+
+            foreach(Card card in p1.getHand())
+            {
+                Console.WriteLine(card.ToString());
+            }
+
+            Console.WriteLine(p1.getTotalValue());
+
+
         }
     }
 }
